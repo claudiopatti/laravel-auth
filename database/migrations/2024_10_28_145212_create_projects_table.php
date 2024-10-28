@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('slug', 128);
             $table->text('description');
             $table->integer('delivery_time')->nullable();
-            $table->decimal('price', 11, 2)->nullable();
+            $table->decimal('price', 11, 2)->nullable()->unsigned();
             $table->boolean('complete')->default(true);
             $table->timestamps();
         });

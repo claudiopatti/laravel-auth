@@ -14,7 +14,7 @@ class Project extends Model
         'slug',
         'description',
         'delivery_time',
-        'prce',
+        'price',
         'complete',
     ];
 }
