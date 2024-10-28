@@ -17,6 +17,13 @@
             </div>
         </div>
     </div>
+    <div class="row mb-4">
+        <div class="col text-end">
+            <a href="{{ route('admin.projects.edit', ['project' => $project->id]) }}" class="btn btn-warning">
+                Modifica
+            </a>
+        </div>
+    </div>
     <div class="row">
         <div class="col">
             <div class="card">

@@ -38,7 +38,7 @@ class ProjectController extends Controller
             'description' => 'required|min:3|max:128',
             'delivery_time' => 'nullable|min:0|max:2000',
             'price' => 'nullable|decimal:2|min:0|max:99999',
-            'complete' => 'nullable',
+            'complete' => 'nullable|in:1,0,true,false',
         ]);
 
         $data['slug'] = str()->slug($data['name']);
@@ -62,7 +62,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit',  compact('project'));
+
     }
 
     /**
@@ -70,7 +71,21 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|min:3|max:128',
+            'description' => 'required|min:3|max:128',
+            'delivery_time' => 'nullable|min:0|max:2000',
+            'price' => 'nullable|decimal:2|min:0|max:99999',
+            'complete' => 'nullable|in:1,0,true,false',
+        ]);
+
+        $data['slug'] = str()->slug($data['name']);
+        $data['complete'] = isset($data['complete']);
+
+        $project->update($data);
+
+        return redirect()->route('admin.projects.show', ['project' => $project->id]);
+
     }
 
     /**

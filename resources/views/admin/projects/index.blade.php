@@ -16,7 +16,7 @@
     </div>
     <div class="row mb-4">
         <div class="col">
-            <a href="{{ route('admin.projects.create') }}" class="btn btn-secondary w-100">
+            <a href="{{ route('admin.projects.create') }}" class="btn btn-success w-100">
                 Aggiungi
             </a>
         </div>
@@ -42,9 +42,11 @@
                                     <td>{{ $project->name }}</td>
                                     <td>{{ $project->description }}</td>
                                     <td>{{ $project->complete ? 'Si' : 'No' }}</td>
-                                    <td class="text center">
-                                        <a href="{{ route('admin.projects.show',[ 'project' => $project->id]) }}" class="btn btn-primary">
+                                    <td class="text-center d-flex ">
+                                        <a href="{{ route('admin.projects.show',[ 'project' => $project->id]) }}" class="btn btn-primary mx-2">
                                             Guarda
+                                        </a><a href="{{ route('admin.projects.edit',[ 'project' => $project->id]) }}" class="btn btn-warning mx-2">
+                                            Modifica
                                         </a>
                                     </td>
                                 </tr>
