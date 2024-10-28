@@ -48,6 +48,15 @@
                                         </a><a href="{{ route('admin.projects.edit',[ 'project' => $project->id]) }}" class="btn btn-warning mx-2">
                                             Modifica
                                         </a>
+                                        <form action="{{ route('admin.projects.destroy', ['project'=> $project->id]) }}" method="POST"
+                                            onsubmit="return confirm('Sei sicuro sicuro di voler eliminare il progetto: {{ $project->name }} ?')">
+
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">
+                                                Elimina
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
